@@ -1,0 +1,46 @@
+15:59:56 **** Incremental Build of configuration Debug for project L298N_PWM_motor_control ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303xC -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:105:3: warning: implicit declaration of function 'Start_mootr' [-Wimplicit-function-declaration]
+  105 |   Start_mootr();
+      |   ^~~~~~~~~~~
+../Core/Src/main.c:114:7: warning: implicit declaration of function 'Set_Direction' [-Wimplicit-function-declaration]
+  114 |       Set_Direction(1, 1); // 모터 A 정방향
+      |       ^~~~~~~~~~~~~
+../Core/Src/main.c:116:7: warning: implicit declaration of function 'Set_PWM' [-Wimplicit-function-declaration]
+  116 |       Set_PWM(100, 75);    // 모터 A: 100%, 모터 B: 75%
+      |       ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:411:6: warning: conflicting types for 'Start_mootr'; have 'void()'
+  411 | void Start_mootr()
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:105:3: note: previous implicit declaration of 'Start_mootr' with type 'void()'
+  105 |   Start_mootr();
+      |   ^~~~~~~~~~~
+../Core/Src/main.c:417:6: warning: conflicting types for 'Set_Direction'; have 'void(uint8_t,  uint8_t)' {aka 'void(unsigned char,  unsigned char)'}
+  417 | void Set_Direction(uint8_t motor, uint8_t dir)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:114:7: note: previous implicit declaration of 'Set_Direction' with type 'void(uint8_t,  uint8_t)' {aka 'void(unsigned char,  unsigned char)'}
+  114 |       Set_Direction(1, 1); // 모터 A 정방향
+      |       ^~~~~~~~~~~~~
+../Core/Src/main.c:428:6: warning: conflicting types for 'Set_PWM'; have 'void(uint8_t,  uint8_t)' {aka 'void(unsigned char,  unsigned char)'}
+  428 | void Set_PWM(uint8_t duty_A, uint8_t duty_B){
+      |      ^~~~~~~
+../Core/Src/main.c:116:7: note: previous implicit declaration of 'Set_PWM' with type 'void(uint8_t,  uint8_t)' {aka 'void(unsigned char,  unsigned char)'}
+  116 |       Set_PWM(100, 75);    // 모터 A: 100%, 모터 B: 75%
+      |       ^~~~~~~
+arm-none-eabi-gcc -o "L298N_PWM_motor_control.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/kyw/STM32CubeIDE/workspace_1.17.0/L298N_PWM_motor_control/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="L298N_PWM_motor_control.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: L298N_PWM_motor_control.elf
+ 
+arm-none-eabi-size  L298N_PWM_motor_control.elf 
+arm-none-eabi-objdump -h -S L298N_PWM_motor_control.elf  > "L298N_PWM_motor_control.list"
+   text	   data	    bss	    dec	    hex	filename
+  16000	     12	   2556	  18568	   4888	L298N_PWM_motor_control.elf
+Finished building: default.size.stdout
+ 
+Finished building: L298N_PWM_motor_control.list
+ 
+
+15:59:57 Build Finished. 0 errors, 6 warnings. (took 651ms)
+

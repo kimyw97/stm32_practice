@@ -1,0 +1,49 @@
+11:51:59 **** Incremental Build of configuration Debug for project robot_project ****
+make -j9 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303xC -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:117:34: warning: implicit declaration of function 'HCSR04_GetDistance' [-Wimplicit-function-declaration]
+  117 |                   int distance = HCSR04_GetDistance();
+      |                                  ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:118:19: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  118 |                   printf("distance: ", distance);
+      |                   ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:118:19: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  118 |                   printf("distance: ", distance);
+      |                   ^~~~~~
+../Core/Src/main.c:118:19: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:118:26: warning: too many arguments for format [-Wformat-extra-args]
+  118 |                   printf("distance: ", distance);
+      |                          ^~~~~~~~~~~~
+../Core/Src/main.c:119:19: warning: implicit declaration of function 'Set_Servo_Angle' [-Wimplicit-function-declaration]
+  119 |                   Set_Servo_Angle(distance);
+      |                   ^~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:461:6: warning: conflicting types for 'Set_Servo_Angle'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  461 | void Set_Servo_Angle(uint8_t angle) {
+      |      ^~~~~~~~~~~~~~~
+../Core/Src/main.c:119:19: note: previous implicit declaration of 'Set_Servo_Angle' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  119 |                   Set_Servo_Angle(distance);
+      |                   ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'delay_us':
+../Core/Src/main.c:470:9: warning: variable 'timercount' set but not used [-Wunused-but-set-variable]
+  470 |     int timercount;
+      |         ^~~~~~~~~~
+arm-none-eabi-gcc -o "robot_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/kyw/STM32CubeIDE/workspace_1.17.0/robot_project/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="robot_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: robot_project.elf
+ 
+arm-none-eabi-size  robot_project.elf 
+arm-none-eabi-objdump -h -S robot_project.elf  > "robot_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  22816	    104	   2968	  25888	   6520	robot_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: robot_project.list
+ 
+
+11:52:00 Build Finished. 0 errors, 7 warnings. (took 1s.44ms)
+
