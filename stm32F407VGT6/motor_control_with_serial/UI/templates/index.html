@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Serial Control</title>
+    <script>
+        function sendCommand(command) {
+            fetch('/send', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ command: command })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("status").innerText = "현재 상태: " + data.status;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function updateStatus() {
+            fetch('/status')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("status").innerText = "현재 상태: " + data.status;
+            });
+        }
+
+        setInterval(updateStatus, 1000);
+    </script>
+</head>
+<body>
+    <h1>Flask Serial Motor Control</h1>
+    <button onclick="sendCommand('1')">전진</button>
+    <button onclick="sendCommand('2')">후진</button>
+    <button onclick="sendCommand('0')">정지</button>
+    <p id="status">현재 상태: 정지</p>
+</body>
+</html>
