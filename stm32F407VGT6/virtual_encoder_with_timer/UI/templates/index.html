@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STM32 Encoder Count</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <h1>STM32 Virtual Encoder</h1>
+    <h2>Count: <span id="count">0</span></h2>
+
+    <script>
+        var socket = io.connect("http://" + document.domain + ":" + location.port);
+
+        socket.on("update_count", function(data) {
+            document.getElementById("count").innerText = data.count;
+        });
+    </script>
+</body>
+</html>
