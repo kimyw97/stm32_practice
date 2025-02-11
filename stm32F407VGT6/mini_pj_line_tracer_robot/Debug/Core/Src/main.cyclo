@@ -1,0 +1,11 @@
+../Core/Src/main.c:69:5:main	1
+../Core/Src/main.c:121:6:SystemClock_Config	3
+../Core/Src/main.c:162:13:MX_NVIC_Init	1
+../Core/Src/main.c:177:13:MX_TIM4_Init	7
+../Core/Src/main.c:240:13:MX_GPIO_Init	1
+../Core/Src/main.c:275:6:StartMotorPWM	1
+../Core/Src/main.c:280:6:SetMotorSpeed	3
+../Core/Src/main.c:290:6:SetDirection	2
+../Core/Src/main.c:304:6:MotorStop	2
+../Core/Src/main.c:314:6:HAL_GPIO_EXTI_Callback	5
+../Core/Src/main.c:335:6:Error_Handler	1
